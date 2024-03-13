@@ -26,7 +26,7 @@ jobs:
           
       - name: change folder
         run: |
-          cd "./src"
+          cmd "./src"
 
       - name: Printing folder
         run: |
