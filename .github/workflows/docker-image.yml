@@ -24,6 +24,10 @@ jobs:
         run: |
           cd "./src/dps-email-poller"
 
+      - name: Printing folder
+        run: |
+          ls -lstra        
+
       - name: "Set up JDK 17"
         uses: actions/setup-java@v2
         with:
