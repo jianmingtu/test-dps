@@ -1,17 +1,11 @@
-name: Pull Request Workflow
+name: View app version
 
 on:
-  - pull_request
+  workflow_dispatch: {}
 
 jobs:
-  unit-test:
-    uses: SierraSystems/reusable-workflows/.github/workflows/java-unit-tests.yml@main
+  app-version:
+    uses: SierraSystems/reusable-workflows/.github/workflows/java-maven-app-version.yml@main
     with:
-      working_directory: '.'
+      working_directory: "src/dps-email-poller"
       java_version: 17
-
-  build-image:
-    uses: SierraSystems/reusable-workflows/.github/workflows/docker-build-image-without-trivy.yml@main
-    with:
-      app_name: 'justin-disputes-api'
-      working_directory: '.'
