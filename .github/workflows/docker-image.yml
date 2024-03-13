@@ -1,18 +1,17 @@
-name: Docker Image CI 14
+name: Pull Request Workflow
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  - pull_request
 
 jobs:
+  unit-test:
+    uses: SierraSystems/reusable-workflows/.github/workflows/java-unit-tests.yml@main
+    with:
+      working_directory: '.'
+      java_version: 17
 
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+  build-image:
+    uses: SierraSystems/reusable-workflows/.github/workflows/docker-build-image-without-trivy.yml@main
+    with:
+      app_name: 'justin-disputes-api'
+      working_directory: '.'
