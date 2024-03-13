@@ -4,8 +4,40 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  app-version:
-    uses: SierraSystems/reusable-workflows/.github/workflows/java-maven-app-version.yml@main
-    with:
-      working_directory: "src/dps-email-poller"
-      java_version: 17
+  get-app-version:
+    name: Get the app-version from the POM file
+    runs-on: ubuntu-latest
+    outputs:
+      app-version: 17
+    defaults:
+      run:
+        working-directory: "src/dps-email-poller"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Printing Inputs
+        run: |
+          echo "java_version:      17"
+          echo "working_directory: src/dps-email-poller"
+
+      - name: "Set up JDK ${{ inputs.java_version }}"
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: ${{ inputs.java_version }}
+          cache: 'maven'
+
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Get Java Project Version
+        id: get-version
+        run: |
+          _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo $_version      
