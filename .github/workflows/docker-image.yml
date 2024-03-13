@@ -22,6 +22,10 @@ jobs:
 
       - name: Printing folder
         run: |
+          ls -lstra    
+          
+      - name: change folder
+        run: |
           cd "./src/dps-email-poller"
 
       - name: Printing folder
