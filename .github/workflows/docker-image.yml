@@ -23,10 +23,7 @@ jobs:
       - name: Printing folder
         run: |
           ls -lstra    
-          
-      - name: change folder
-        run: |
-          cd: ./src
+      
 
       - name: Printing folder
         run: |
