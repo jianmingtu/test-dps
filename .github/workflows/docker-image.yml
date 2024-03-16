@@ -25,7 +25,10 @@ jobs:
           ls -lstra         
           cd src
           cd dps-email-poller
-          ls -lstra
+
+      - name: Printing folder/change to src/dps-email-poller
+        run: |
+          ls -lstra         
           echo ${{ github.workspace }}
             
       - name: "Set up JDK 17"
