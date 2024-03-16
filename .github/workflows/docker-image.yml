@@ -37,7 +37,6 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: CD - Get Java Project Version
-        working-directory: "./src/dps-email-poller"
         run: |
           cd src
           cd dps-email-poller
