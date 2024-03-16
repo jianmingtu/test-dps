@@ -23,7 +23,8 @@ jobs:
       - name: Printing folder/change to src/dps-email-poller
         run: |
           ls -lstra         
-          cd src/dps-email-poller
+          cd src
+          cd dps-email-poller
           ls -lstra
             
       - name: "Set up JDK 17"
