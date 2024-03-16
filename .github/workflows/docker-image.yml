@@ -36,6 +36,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: list - list BOM file
+        run: |
+          cd src/libs/dps-bom
+          cat pom.xml      
+
       - name: CD - Get Java Project Version
         run: |
           cd src
