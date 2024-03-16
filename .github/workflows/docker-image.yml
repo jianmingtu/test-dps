@@ -20,7 +20,13 @@ jobs:
           echo "working_directory: src/dps-email-poller"
           echo "current_directory: ${{ github.workspace }}"     
       
-
+      - name: Printing folder/change to src/dps-email-poller
+        run: |
+          ls -lstra         
+          cd src
+          cd dps-email-poller
+          ls -lstra
+          echo ${{ github.workspace }}
             
       - name: "Set up JDK 17"
         uses: actions/setup-java@v2
