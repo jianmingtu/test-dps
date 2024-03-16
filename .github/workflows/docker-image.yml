@@ -36,14 +36,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: PWD - Correct
+      - name: CD - Get Java Project Version
         working-directory: "./src/dps-email-poller"
         run: |
+          cd src
+          cd dps-email-poller
+          ls -lstra
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo $_version             
 
-      - name: Get Java Project Version
-        id: get-version
+      - name: WD - Java Project Version
+        working-directory: "./src/dps-email-poller"
         run: |
+          ls -lstra
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo $_version  
