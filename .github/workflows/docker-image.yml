@@ -45,6 +45,7 @@ jobs:
           echo $_version             
 
       - name: WD - Java Project Version
+        if: always()
         working-directory: "./src/dps-email-poller"
         run: |
           ls -lstra
