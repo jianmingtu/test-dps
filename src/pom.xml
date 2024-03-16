@@ -131,6 +131,9 @@
         </profile>
         <profile>
             <id>dps-email-poller</id>
+            <properties>
+                <projectVersion>0.5.0</projectVersion>
+            </properties>
             <modules>
                 <module>libs/dps-bom</module>
                 <module>libs/dps-commons</module>
@@ -142,6 +145,9 @@
         </profile>
         <profile>
             <id>dps-email-worker</id>
+            <properties>
+                <projectVersion>0.5.0</projectVersion>
+            </properties>
             <modules>
                 <module>libs/dps-bom</module>
                 <module>libs/dps-messaging-starter</module>
