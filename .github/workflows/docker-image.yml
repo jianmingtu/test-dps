@@ -35,8 +35,9 @@ jobs:
           cat pom.xml      
 
       - name: CD - Get Java Project Version
-        run: |  
-          mvn help:evaluate -Dexpression=project.version -q -DforceStdout
+        run: |
+          cd src
+          mvn help:evaluate -Dexpression=project.version -q -DforceStdout -Pdps-email-poller
 
       - name: CD - Get Java Project Version
         if: always()
