@@ -39,7 +39,8 @@ jobs:
       - name: PWD - Correct
         working-directory: "./src/dps-email-poller"
         run: |
-          pwd            
+          _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo $_version             
 
       - name: Get Java Project Version
         id: get-version
