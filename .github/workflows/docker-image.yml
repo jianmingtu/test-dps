@@ -26,7 +26,7 @@ jobs:
       
       - name: Printing folder
         run: |
-          cd src
+          cd src/dps-email-poller
           ls -lstra
           
       - name: Printing folder
@@ -54,4 +54,3 @@ jobs:
         run: |
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo $_version  
-        working-directory: "./src/dps-email-poller"
