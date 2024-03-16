@@ -26,7 +26,7 @@ jobs:
           distribution: 'temurin'
           java-version: 17
           cache: 'maven'
-          working-directory: "src/dps-email-poller"
+          working-directory: "."
 
       - name: Cache local Maven repository
         uses: actions/cache@v2
@@ -36,10 +36,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: PWD - Correct
+        working-directory: "./src/dps-email-poller"
+        run: |
+          pwd            
+
       - name: Get Java Project Version
         id: get-version
         run: |
-          cd src
-          cd dps-email-poller
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo $_version  
