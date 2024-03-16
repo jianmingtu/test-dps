@@ -34,6 +34,7 @@ jobs:
           distribution: 'temurin'
           java-version: 17
           cache: 'maven'
+          working-directory: "src/dps-email-poller"
 
       - name: Cache local Maven repository
         uses: actions/cache@v2
@@ -48,3 +49,4 @@ jobs:
         run: |
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo $_version  
+        working-directory: "src/dps-email-poller"
