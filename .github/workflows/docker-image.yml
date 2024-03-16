@@ -14,19 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Printing Inputs
-        run: |
-          echo "java_version:      17"
-          echo "working_directory: src/dps-email-poller"
-          echo "current_directory: ${{ github.workspace }}"     
-            
       - name: "Set up JDK 17"
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
           java-version: 17
           cache: 'maven'
-          working-directory: "."
 
       - name: Cache local Maven repository
         uses: actions/cache@v2
@@ -42,16 +35,11 @@ jobs:
           cat pom.xml      
 
       - name: CD - Get Java Project Version
-        run: |
-          cd src
-          cd dps-email-poller
-          ls -lstra
-          cat pom.xml
-          _version=0.5.0
-          echo $_version   
+        run: |  
           mvn help:evaluate -Dexpression=project.version -q -DforceStdout
 
       - name: CD - Get Java Project Version
+        if: always()
         run: |
           cd src
           cd dps-email-poller
