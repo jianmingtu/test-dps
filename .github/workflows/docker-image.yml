@@ -39,6 +39,7 @@ jobs:
       - name: Get Java Project Version
         id: get-version
         run: |
-          cd src/dps-email-poller
+          cd src
+          cd dps-email-poller
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo $_version  
