@@ -48,3 +48,4 @@ jobs:
         id: get-version
         run: |
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo $_version  
