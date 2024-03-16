@@ -42,6 +42,15 @@ jobs:
           cd dps-email-poller
           ls -lstra
           cat pom.xml
+          _version=0.5.0
+          echo $_version            
+
+      - name: CD - Get Java Project Version
+        run: |
+          cd src
+          cd dps-email-poller
+          ls -lstra
+          cat pom.xml
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo $_version             
 
