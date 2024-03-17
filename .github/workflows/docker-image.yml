@@ -54,5 +54,5 @@ jobs:
       - name: WD - Java Project Version
         working-directory: "./src"
         run: |
-          _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -P ${{ github.event.inputs.app_name }})
+          _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -P${{ github.event.inputs.app_name }})
           echo $_version  
