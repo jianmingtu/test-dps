@@ -33,7 +33,7 @@ jobs:
       run:
         working-directory: "."
     outputs:
-      value: ${{ steps.app-version.outputs.app-version }}
+      app-version: ${{ steps.app-version.outputs.app-version }}
 
     steps:
       - uses: actions/checkout@v2
@@ -66,6 +66,6 @@ jobs:
     needs: get-app-version
     steps:
       - name: print version
-        run: echo "${{needs.get-app-version.outputs.value}}"          
+        run: echo "${{needs.get-app-version.outputs.app-version}}"          
 
 
