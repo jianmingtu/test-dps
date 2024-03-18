@@ -33,7 +33,7 @@ jobs:
       run:
         working-directory: "."
     outputs:
-       app-version: ${{ steps.step1.outputs.version }}
+       app-version: ${{ steps.get-app-version.outputs.version }}
 
     steps:
       - uses: actions/checkout@v2
@@ -54,7 +54,7 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Get Project Version
-        id: step1
+        id: get-app-version
         working-directory: "./src"
         run: |
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -P${{ github.event.inputs.app_name }})
