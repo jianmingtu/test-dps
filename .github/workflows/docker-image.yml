@@ -33,7 +33,7 @@ jobs:
       run:
         working-directory: "."
     outputs:
-      app-version: ${{ steps.app-version.outputs.app-version }}
+       output1: ${{ steps.step1.outputs.test }}
 
     steps:
       - uses: actions/checkout@v2
@@ -54,11 +54,11 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Get Project Version
-        id: app-verison
+        id: step1
         working-directory: "./src"
         run: |
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -P${{ github.event.inputs.app_name }})
-          echo "app-version=hello" >> "$GITHUB_OUTPUT"
+           run: echo "test=hello" >> "$GITHUB_OUTPUT"
           echo $_version
 
   build-and-push-image:
@@ -66,7 +66,7 @@ jobs:
     needs: get-app-version
     steps:
       - env:
-          OUTPUT1: ${{needs.get-app-version.outputs.app-version}}      
+          OUTPUT1: ${{needs.get-app-version.outputs.output1}}      
         run: echo "$OUTPUT1"   
 
   job1:
