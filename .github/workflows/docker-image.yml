@@ -65,8 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-app-version
     steps:
-      - name: print version
-        env:
+      - env:
           OUTPUT1: ${{needs.get-app-version.outputs.app-version}}      
         run: echo "$OUTPUT1"   
 
