@@ -58,7 +58,7 @@ jobs:
         working-directory: "./src"
         run: |
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -P${{ github.event.inputs.app_name }})
-           run: echo "test=hello" >> "$GITHUB_OUTPUT"
+          echo "test=hello" >> "$GITHUB_OUTPUT"
           echo $_version
 
   build-and-push-image:
