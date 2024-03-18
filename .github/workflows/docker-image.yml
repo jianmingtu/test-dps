@@ -33,7 +33,7 @@ jobs:
       run:
         working-directory: "."
     outputs:
-       output1: ${{ steps.step1.outputs.test }}
+       app-version: ${{ steps.step1.outputs.version }}
 
     steps:
       - uses: actions/checkout@v2
@@ -58,7 +58,7 @@ jobs:
         working-directory: "./src"
         run: |
           _version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout -P${{ github.event.inputs.app_name }})
-          echo "test=$_version " >> "$GITHUB_OUTPUT"
+          echo "version=$_version " >> "$GITHUB_OUTPUT"
           echo $_version
 
   build-and-push-image:
@@ -66,7 +66,7 @@ jobs:
     needs: get-app-version
     steps:
       - env:
-          OUTPUT1: ${{needs.get-app-version.outputs.output1}}      
+          OUTPUT1: ${{needs.get-app-version.outputs.app-version}}      
         run: echo "$OUTPUT1"   
    
 
