@@ -38,7 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build Spring SFTP Starter
+      - name: Build Vips Client 
         working-directory: "./src/libs"
         run: git submodule update --init      
 
