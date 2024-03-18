@@ -26,7 +26,7 @@ on:
           - prod          
 
 jobs:
-  get-app-version:
+  app-version:
     name: Get the app-version from the POM file
     runs-on: ubuntu-latest
     defaults:
@@ -63,10 +63,10 @@ jobs:
 
   build-and-push-image:
     runs-on: ubuntu-latest
-    needs: get-app-version
+    needs: app-version
     steps:
       - name: print version     
-        run: echo "${{needs.get-app-version.outputs.app-version}}"   
+        run: echo "${{needs.app-version.outputs.app-version}}"   
    
 
 
